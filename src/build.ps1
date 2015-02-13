@@ -7,11 +7,11 @@ param(
 
 function Set-AssemblyVersions($informational, $assembly)
 {
-    (Get-Content WebJobSentinel/AssemblyInfo.cs) |
+    (Get-Content src/WebJobSentinel/AssemblyInfo.cs) |
         ForEach-Object { $_ -replace """1.0.0.0""", """$assembly""" } |
         ForEach-Object { $_ -replace """1.0.0""", """$informational""" } |
         ForEach-Object { $_ -replace """1.1.1.1""", """$($informational).0""" } |
-        Set-Content WebJobSentinel/AssemblyInfo.cs
+        Set-Content src/WebJobSentinel/AssemblyInfo.cs
 }
 
 function Install-NuGetPackages()

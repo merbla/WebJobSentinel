@@ -10,11 +10,16 @@ namespace WebJobSentinel.Example
 {
     namespace WebJobSentinel.Example
     {
-        internal class Program :IDisposable
+        internal class Program : IDisposable
 
         {
             private static bool _running = true;
             private static Sentinel _sentinel;
+
+            public void Dispose()
+            {
+                _sentinel.Dispose();
+            }
 
             private static void Main()
             {
@@ -22,35 +27,23 @@ namespace WebJobSentinel.Example
                     .WriteTo.ColoredConsole()
                     .CreateLogger();
 
-
                 Log.Information("Starting");
 
-
-                _sentinel = new Sentinel(args => Log.Information("File Created"),
+                _sentinel = new Sentinel(
+                    args => Log.Information("File Created"),
                     args => Log.Information("File Changed"));
 
 
-                RepeatAction.OnInterval(TimeSpan.FromSeconds(2), () =>
+                var task = RepeatAction.OnInterval(TimeSpan.FromSeconds(5), () =>
                 {
+                    //Do work
                     Log.Information("Running and waiting");
-
                 }, new CancellationToken());
 
 
-                //// Run as long as we didn't get a shutdown notification
-                //while (_running)
-                //{
-                //    // Here is my actual work
-                //    Log.Information("Running and waiting " + DateTime.UtcNow);
-                //    Thread.Sleep(1000);
-                //}
+                task.Wait();
 
                 Log.Information("Stopped");
-            }
-
-            public void Dispose()
-            {
-                _sentinel.Dispose();
             }
         }
     }

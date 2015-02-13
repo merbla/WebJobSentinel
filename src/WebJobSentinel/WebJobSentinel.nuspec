@@ -6,7 +6,7 @@
     <authors>Matthew Erbs</authors>
     <description>A file watcher to help determine when an Azure Web Job exits.</description>
     <language>en-US</language>
-    <projectUrl>http://serilog.net</projectUrl>
+    <projectUrl>https://github.com/merbla/WebJobSentinel</projectUrl>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
     <tags>azure webjob job websites</tags>
     <dependencies>

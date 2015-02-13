@@ -63,8 +63,11 @@ function Invoke-Build($majorMinor, $patch, $customLogger, $notouch)
     }
 
     Install-NuGetPackages
+
+	ls
+
     
-    Invoke-MSBuild "src/WebjobSentinel.sln" $customLogger
+    Invoke-MSBuild "src/WebJobSentinel.sln" $customLogger
 
     Invoke-NuGetPack $package
 }

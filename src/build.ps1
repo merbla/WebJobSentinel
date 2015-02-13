@@ -16,7 +16,7 @@ function Set-AssemblyVersions($informational, $assembly)
 
 function Install-NuGetPackages()
 {
-    nuget restore WebJobSentinel.sln
+    nuget restore "src/WebJobSentinel.sln"
 }
 
 function Invoke-MSBuild($solution, $customLogger)

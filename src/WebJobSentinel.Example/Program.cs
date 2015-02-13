@@ -23,18 +23,29 @@ namespace WebJobSentinel.Example
                     .CreateLogger();
 
 
-                _sentinel = new Sentinel(args => Log.Information("File Created"),  args => Log.Information("File Changed"));
+                Log.Information("Starting");
 
 
-                // Run as long as we didn't get a shutdown notification
-                while (_running)
+                _sentinel = new Sentinel(args => Log.Information("File Created"),
+                    args => Log.Information("File Changed"));
+
+
+                RepeatAction.OnInterval(TimeSpan.FromSeconds(2), () =>
                 {
-                    // Here is my actual work
-                    Log.Information("Running and waiting " + DateTime.UtcNow);
-                    Thread.Sleep(1000);
-                }
+                    Log.Information("Running and waiting");
 
-                Log.Information("Stopped " + DateTime.UtcNow);
+                }, new CancellationToken());
+
+
+                //// Run as long as we didn't get a shutdown notification
+                //while (_running)
+                //{
+                //    // Here is my actual work
+                //    Log.Information("Running and waiting " + DateTime.UtcNow);
+                //    Thread.Sleep(1000);
+                //}
+
+                Log.Information("Stopped");
             }
 
             public void Dispose()

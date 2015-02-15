@@ -13,8 +13,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="src\WebJobSentinel\bin\Release\WebJobSentinel.dll" target="lib\net45" />
-    <file src="src\WebJobSentinel\bin\Release\WebJobSentinel.xml" target="lib\net45" />
-    <file src="src\WebJobSentinel\bin\Release\WebJobSentinel.pdb" target="lib\net45" />
+    <file src="bin\Release\WebJobSentinel.dll" target="lib\net45" />
+    <file src="bin\Release\WebJobSentinel.pdb" target="lib\net45" />
   </files>
 </package>

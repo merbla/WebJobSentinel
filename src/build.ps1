@@ -55,7 +55,7 @@ function Invoke-Build($majorMinor,  $customLogger, $notouch)
 
     if (-not $notouch)
     {
-        $assembly = "$majorMinor.0.0"
+        $assembly = "$majorMinor"
 
         Write-Output "Assembly version will be set to $assembly"
         Set-AssemblyVersions $package $assembly

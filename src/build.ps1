@@ -43,7 +43,7 @@ function Invoke-NuGetPackSpec($nuspec, $version)
 
 function Invoke-NuGetPack($version)
 {
-    ls WebJobSentinel/*.nuspec | 
+    ls src/WebJobSentinel/*.nuspec | 
         ForEach-Object { Invoke-NuGetPackSpec $_  $version}
 }
 

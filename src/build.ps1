@@ -43,9 +43,8 @@ function Invoke-NuGetPackSpec($nuspec, $version)
 
 function Invoke-NuGetPack($version)
 {
-    ls src/**/*.csproj |
-        Where-Object { -not ($_.Name -like "*net40*") } |
-        ForEach-Object { Invoke-NuGetPackProj $_ }
+    ls WebJobSentinel/*.nuspec | 
+        ForEach-Object { Invoke-NuGetPackSpec $_  $version}
 }
 
 function Invoke-Build($majorMinor, $patch, $customLogger, $notouch)

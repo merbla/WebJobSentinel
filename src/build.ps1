@@ -38,7 +38,7 @@ function Invoke-NuGetPackProj($csproj)
 
 function Invoke-NuGetPackSpec($nuspec, $version)
 {
-    nuget pack $nuspec -Version $version -OutputDirectory ..\..\ -Verbosity detailed
+    nuget pack $nuspec -Version $version -OutputDirectory  -Verbosity detailed
 }
 
 function Invoke-NuGetPack($version)
@@ -62,8 +62,6 @@ function Invoke-Build($majorMinor,  $customLogger, $notouch)
     }
 
     Install-NuGetPackages
-
-	ls
 
     
     Invoke-MSBuild "src/WebJobSentinel.sln" $customLogger

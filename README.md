@@ -1,5 +1,5 @@
 # WebJobSentinel
-A simple implementation to indicate shut down in Azure Web Jobs based on (https://github.com/projectkudu/kudu/wiki/Web-jobs), inspired by http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/
+A simple implementation to indicate the start of a shut down within Azure Web Jobs based on (https://github.com/projectkudu/kudu/wiki/Web-jobs), inspired by http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/
 
 [![NuGet Version](http://img.shields.io/nuget/v/WebJobSentinel.svg?style=flat)](https://www.nuget.org/packages/WebJobSentinel/) [![Build status](https://ci.appveyor.com/api/projects/status/2yi7pkowhmxq7ydu?svg=true)](https://ci.appveyor.com/project/merbla/webjobsentinel)
  

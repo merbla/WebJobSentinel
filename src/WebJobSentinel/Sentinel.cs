@@ -9,10 +9,8 @@ namespace WebJobSentinel
 {
     public class Sentinel : IDisposable
     {
-        private readonly Action<string> _log;
         public const string WebjobsShutdownFile = "WEBJOBS_SHUTDOWN_FILE";
         private readonly FileSystemWatcher _shutdownFileSystemWatcher;
-
 
         public Sentinel()
         {

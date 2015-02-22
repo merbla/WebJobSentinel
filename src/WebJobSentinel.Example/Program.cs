@@ -23,6 +23,8 @@ namespace WebJobSentinel.Example
 
             private static void Main()
             {
+                var cts = new CancellationTokenSource();
+
                 Log.Logger = new LoggerConfiguration()
                     .WriteTo.ColoredConsole()
                     .CreateLogger();
@@ -31,14 +33,23 @@ namespace WebJobSentinel.Example
 
                 _sentinel = new Sentinel(
                     args => Log.Information("File Created"),
-                    args => Log.Information("File Changed"));
+                    args =>
+                    {
+                        Log.Information("File Changed");
+                        cts.Cancel(false);
+                    });
 
 
+                //Alternatively
+                //_sentinel.OnShutdownFileChanged += args => { };
+                //_sentinel.OnShutdownFileCreated += args => { };
+
+              
                 var task = RepeatAction.OnInterval(TimeSpan.FromSeconds(5), () =>
                 {
                     //Do work
                     Log.Information("Running and waiting");
-                }, new CancellationToken());
+                }, cts.Token);
 
 
                 task.Wait();
